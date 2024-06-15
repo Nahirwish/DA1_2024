@@ -1,5 +1,6 @@
 package com.example.lolapp.ui
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,15 +16,15 @@ class ListViewModel: ViewModel() {
     val champRepo : ChampionsRepository = ChampionsRepository()
     var champions : MutableLiveData<ArrayList<Champion>> = MutableLiveData<ArrayList<Champion>>()
 
-    var page = 1
+
 
     private val coroutineContext: CoroutineContext = newSingleThreadContext("champs")
     private val scope = CoroutineScope(coroutineContext)
 
-    fun init(){
+    fun init(context: Context){
         scope.launch {
             kotlin.runCatching {
-                champRepo.getChampions()
+                champRepo.getChampions(context)
             }.onSuccess {
                 Log.d("Log_Main_Activity", "Champions onSucces")
                 champions.postValue(it)

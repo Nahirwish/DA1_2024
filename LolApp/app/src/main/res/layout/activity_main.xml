@@ -18,51 +18,19 @@
         app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/sr" />
 
-    <EditText
-        android:id="@+id/editEmailAddress"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="300dp"
-        android:background="#E6000000"
-        android:backgroundTint="#E6403D3D"
-        android:backgroundTintMode="add"
-        android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#CCA3C7C7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:background="#E6000000"
-        android:backgroundTint="#E6403D3D"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColorHint="#CCA3C7C7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmailAddress" />
-
     <Button
         android:id="@+id/btn_login"
         android:layout_width="165dp"
         android:layout_height="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="250dp"
         android:backgroundTint="#1E252A"
         android:fontFamily="@font/pt_serif_caption"
         android:text="ENTRAR"
         android:textColor="#A3C7C7"
         app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword"
         app:strokeColor="#0ABBAF"
         app:strokeWidth="2dp" />
 

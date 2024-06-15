@@ -21,7 +21,7 @@ class ChampionsAdapter : RecyclerView.Adapter<ChampionsViewHolder>(){
         holder.itemView.setOnClickListener(){
             var id = items[position].champion_name
             val intent = Intent(holder.itemView.context, ChampionDetailActivity::class.java)
-            intent.putExtra(champion_name)
+            intent.putExtra("id", id)
             holder.itemView.context.startActivity(intent)
         }
 

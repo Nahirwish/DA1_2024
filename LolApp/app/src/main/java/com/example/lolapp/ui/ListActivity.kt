@@ -34,7 +34,7 @@ class ListActivity : AppCompatActivity() {
             adapter.update(it)
         }
 
-        viewModel.init()
+        viewModel.init(this)
     }
 
 }

@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.lolapp.R
-import com.google.firebase.firestore.core.View
+import android.view.View
 import com.bumptech.glide.Glide
 
 
@@ -31,20 +31,23 @@ class ChampionDetailActivity : AppCompatActivity() {
         }
 
         viewModel = ViewModelProvider(this)[ChampionViewModel::class.java]
-        champion_name.findViewById(R.id.txtChampionName)
-        champion_caption.findViewById(R.id.txtChampionCaption)
-        profile_img.findViewById(R.id.imgSplashArt)
-        pb.findViewById(R.id.progressBar)
+        champion_name = findViewById(R.id.txtChampionName)
+        champion_caption= findViewById(R.id.txtChampionCaption)
+        profile_img = findViewById(R.id.imgSplashArt)
+        pb = findViewById(R.id.progressBar)
+
+        val id = intent.getStringExtra("id")
+
 
         viewModel.champion.observe(this) {
             champion_name.text = it.champion_name
-            champion_caption.text = it.
+            champion_caption.text = it.champion_caption
             Glide.with(this).load(it.profile_img).into(profile_img)
             pb.visibility = View.INVISIBLE
         }
 
         pb.visibility = View.VISIBLE
-        viewModel.init(id)
+        viewModel.init(id!!, this)
 
 
     }

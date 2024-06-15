@@ -1,14 +1,16 @@
 package com.example.lolapp.data
 
+import android.content.Context
 import com.example.lolapp.model.Champion
+import com.example.lolapp.model.ChampionDetail
 
 class ChampionsRepository {
 
-    suspend fun getChampions() : ArrayList<Champion>{
-        return ChampionsDataSource.Companion.getChampions()
+    suspend fun getChampions(context: Context) : ArrayList<Champion>{
+        return ChampionsDataSource.Companion.getChampions(context)
     }
 
-    suspend fun getChampion(name: String) : Champion{
+    suspend fun getChampion(name: String) : ChampionDetail?{
         return ChampionsDataSource.Companion.getChampion(name)
     }
 }

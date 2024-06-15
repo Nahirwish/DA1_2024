@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 abstract class AppDataBase: RoomDatabase() {
-    abstract fun championsDao: ChampionDAO
+    abstract fun championsDao(): ChampionDAO
 
 
     companion object{
@@ -22,7 +24,10 @@ abstract class AppDataBase: RoomDatabase() {
             .build()
         }
 
-        private fun clean(context: Context): CoroutineScope{
-            launch.
+        suspend fun clean(context: Context){
+            CoroutineScope(Dispatchers.IO).launch {
+                getInstance(context).clearAllTables()
+            }
+
         }
 }

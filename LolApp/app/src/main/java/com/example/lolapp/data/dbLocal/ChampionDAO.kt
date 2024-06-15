@@ -10,10 +10,10 @@ import androidx.room.Query
 interface ChampionDAO {
     @Query("SELECT * FROM Champions")
     fun getAll(): List<ChampionLocal>
-    @Query("SELECT * FROM Champions WHERE champion_name =:champion_name LIMIT 1")
-    fun getByPK(champion_name String): ChampionLocal
+    @Query("SELECT * FROM Champions WHERE champion_name = :champion_name LIMIT 1")
+    fun getByPK(champion_name: String): ChampionLocal
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg chmapion: ChampionLocal)
+    fun save(vararg champion: ChampionLocal)
     @Delete
     fun delete(champion: ChampionLocal)
 }
