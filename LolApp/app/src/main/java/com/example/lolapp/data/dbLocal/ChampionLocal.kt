@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class ChampionLocal (
     @PrimaryKey var champion_name : String,
     var recomended_roles : String,
-    var profile_img : String
+    var profile_img : String,
+    var isFavorite: Boolean
 )

@@ -22,14 +22,15 @@ class ListViewModel: ViewModel() {
     private val scope = CoroutineScope(coroutineContext)
 
     fun init(context: Context){
+        Log.d("Log_Main_Activity", "Init ejecutado en viewModel")
         scope.launch {
             kotlin.runCatching {
                 champRepo.getChampions(context)
             }.onSuccess {
-                Log.d("Log_Main_Activity", "Champions onSucces")
+                Log.d("Log_Main_Activity", "Campeones cargados: ${it.size}")
                 champions.postValue(it)
             }.onFailure {
-                Log.e("Log_Main_Activity", "Champions error"+ it)
+                Log.e("Log_Main_Activity", "No hay campeones para mostrar"+ it)
                 champions.postValue(ArrayList<Champion>())
             }
 

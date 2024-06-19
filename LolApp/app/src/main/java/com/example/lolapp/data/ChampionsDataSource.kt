@@ -18,30 +18,48 @@ import kotlin.coroutines.suspendCoroutine
 
 
 class ChampionsDataSource {
-    companion object{
-        private val API_BASE_URL_LISTA = "https://run.mocky.io/v3/3bb6960c-155f-4b59-810c-b718f7378b96" //es-mx?page=0&size=10"
-        private val API_BASE_URL_DETAIL = "https://run.mocky.io/v3/6b10bbf9-c36a-4d29-bcd7-cd53efa5352f"
+    companion object {
+        private val API_BASE_URL_LISTA = "https://run.mocky.io/v3/30dc02ab-ea5c-48f4-9bbf-3555e689ba38/" //es-mx?page=0&size=10"
+        private val API_BASE_URL_DETAIL = "https://run.mocky.io/v3/6b10bbf9-c36a-4d29-bcd7-cd53efa5352f/"
         //private var page = 0
         //private val lang = "es-mx"
         //private var size = 10
-        private val api_lista : ChampionAPI
-        private val api_detail: ChampionAPI
+        private var api_lista: ChampionAPI
+        private var api_detail: ChampionAPI
         private val db = FirebaseFirestore.getInstance()
 
         init {
-            api_lista = Retrofit.Builder()
-                .baseUrl(API_BASE_URL_LISTA)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(ChampionAPI::class.java)
+            try {
+                api_lista = Retrofit.Builder()
+                    .baseUrl(API_BASE_URL_LISTA)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(ChampionAPI::class.java)
 
-            api_detail = Retrofit.Builder()
-                .baseUrl(API_BASE_URL_DETAIL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(ChampionAPI::class.java)
-        }
+                api_detail = Retrofit.Builder()
+                    .baseUrl(API_BASE_URL_DETAIL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(ChampionAPI::class.java)
+            }
+            catch (e :Exception){
+                Log.e("Log_Main_Activity", e.message!!)
+            }
+            finally {
+                api_lista = Retrofit.Builder()
+                    .baseUrl(API_BASE_URL_LISTA)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(ChampionAPI::class.java)
+
+                api_detail = Retrofit.Builder()
+                    .baseUrl(API_BASE_URL_DETAIL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(ChampionAPI::class.java)
+            }
+            }
+
 
 
         suspend fun getChampions(context: Context): ArrayList<Champion> {
+            Log.d("Log_Main_Activity", "se ejecuto getChamps en DataSource")
             // Recupero lista de la base local
             var db = AppDataBase.getInstance(context)
             var championLocal = db.championsDao().getAll()
