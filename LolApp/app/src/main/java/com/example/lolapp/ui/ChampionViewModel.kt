@@ -21,7 +21,7 @@ class ChampionViewModel : ViewModel(){
     fun init(name: String, context: Context){
         scope.launch {
             kotlin.runCatching {
-                champRepo.getChampion(name) // ????????
+                champRepo.getChampion(name, context) // ????????
             }.onSuccess {
                 champion.postValue(it ?: ChampionDetail())
             }.onFailure {
@@ -30,6 +30,14 @@ class ChampionViewModel : ViewModel(){
                 champ.recomended_roles = ""
                 champion.postValue(champ)
             }
+        }
+    }
+
+    fun addFavorite(id: String){
+        scope.launch {
+            kotlin.runCatching {
+                champRepo.addFavorite(id)
+            }.onSuccess {  }
         }
     }
 }

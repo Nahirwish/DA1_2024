@@ -12,7 +12,12 @@ class ChampionsRepository {
         return ChampionsDataSource.getChampions(context)
     }
 
-    suspend fun getChampion(name: String) : ChampionDetail?{
-        return ChampionsDataSource.getChampion(name)
+    suspend fun getChampion(name: String, context: Context) : ChampionDetail?{
+        return ChampionsDataSource.getChampion(name, context)
+    }
+
+    suspend fun addFavorite(id: String){
+        Log.d("Log_Main_Activity", "Repository addFavorite")
+        ChampionsDataSource.addFavorite(id)
     }
 }

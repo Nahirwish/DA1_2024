@@ -1,0 +1,52 @@
+[
+  {
+    "champion_name": "Aatrox",
+    "recomended_roles": "Luchador",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Aatrox.png"
+  },
+  {
+    "champion_name": "Ahri",
+    "recomended_roles": "Mago",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Ahri.png"
+  },
+  {
+    "champion_name": "Akali",
+    "recomended_roles": "Asesino",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Akali.png"
+  },
+  {
+    "champion_name": "Akshan",
+    "recomended_roles": "Tirador",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Akshan.png"
+  },
+  {
+    "champion_name": "Alistar",
+    "recomended_roles": "Tanque",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Alistar.png"
+  },
+  {
+    "champion_name": "Amumu",
+    "recomended_roles": "Tanque",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Amumu.png"
+  },
+  {
+    "champion_name": "Anivia",
+    "recomended_roles": "Mago",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Anivia.png"
+  },
+  {
+    "champion_name": "Annie",
+    "recomended_roles": "Mago",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Annie.png"
+  },
+  {
+    "champion_name": "Aphelios",
+    "recomended_roles": "Tirador",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Aphelios.png"
+  },
+  {
+    "champion_name": "Ashe",
+    "recomended_roles": "Tirador",
+    "profile_img": "https://ddragon.leagueoflegends.com/cdn/14.9.1/img/champion/Ashe.png"
+  }
+]
