@@ -29,9 +29,11 @@ class ChampionsAdapter : RecyclerView.Adapter<ChampionsViewHolder>(){
             val intent = Intent(holder.itemView.context, ChampionDetailActivity::class.java)
             intent.putExtra("id", id)
             holder.itemView.context.startActivity(intent)
+            Log.d("Log_Main_Activity", "context: ${it.context}")
         }
 
     }
+
 
     override fun getItemCount(): Int {
         Log.d("Log_Main_Activity", "Adapter getItemCount: " + items.size)

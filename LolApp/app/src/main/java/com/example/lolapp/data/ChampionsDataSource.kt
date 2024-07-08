@@ -3,6 +3,7 @@ package com.example.lolapp.data
 import android.content.Context
 import android.util.JsonReader
 import android.util.Log
+import android.widget.Toast
 import com.example.lolapp.data.dbLocal.AppDataBase
 import com.example.lolapp.data.dbLocal.ChampionLocal
 import com.example.lolapp.data.dbLocal.toChampionList
@@ -27,8 +28,11 @@ import kotlin.coroutines.coroutineContext
 
 class ChampionsDataSource {
     companion object {
-        private val API_BASE_URL_LISTA = "https://run.mocky.io/v3/103df2f4-3e8b-4d3c-b86d-278229121af4/"
-        private val API_BASE_URL_DETAIL = "https://run.mocky.io/v3/cdf3bbe8-1d88-4660-be0c-35c68dcb6f85/"
+        private val API_BASE_URL_LISTA =
+            "https://run.mocky.io/v3/103df2f4-3e8b-4d3c-b86d-278229121af4/"
+        private val API_BASE_URL_DETAIL =
+            "https://run.mocky.io/v3/cdf3bbe8-1d88-4660-be0c-35c68dcb6f85/"
+
         //private var page = 0
         //private val lang = "es-mx"
         //private var size = 10
@@ -52,11 +56,9 @@ class ChampionsDataSource {
                     .baseUrl(API_BASE_URL_DETAIL)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build().create(ChampionAPI::class.java)
-            }
-            catch (e :Exception){
+            } catch (e: Exception) {
                 Log.e("Log_Main_Activity", e.message!!)
-            }
-            finally {
+            } finally {
                 val gson = GsonBuilder()
                     .serializeNulls()
                     .serializeSpecialFloatingPointValues()
@@ -72,8 +74,7 @@ class ChampionsDataSource {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build().create(ChampionAPI::class.java)
             }
-            }
-
+        }
 
 
         suspend fun getChampions(context: Context): ArrayList<Champion> {
@@ -81,7 +82,7 @@ class ChampionsDataSource {
             // Recupero lista de la base local
             var db = AppDataBase.getInstance(context)
             var championLocal = db.championsDao().getAll()
-            if (championLocal.size > 0){
+            if (championLocal.size > 0) {
                 Log.d("Log_Main_Activity", "Devuelvo la lista local")
                 return championLocal.toChampionList() as ArrayList<Champion>
             }
@@ -101,7 +102,7 @@ class ChampionsDataSource {
             return champions
         }
 
-            /*var result = api_lista.getChampions().execute()
+        /*var result = api_lista.getChampions().execute()
             Log.d("Log_Main_Activity", "Raw response: ${result.raw()}")
             // Recupero de la API
             return if (result.isSuccessful) {
@@ -120,21 +121,20 @@ class ChampionsDataSource {
 
         }*/
 
-        suspend fun getChampion(name: String, context: Context): ChampionDetail?{
+        suspend fun getChampion(name: String, context: Context): ChampionDetail? {
 
             var champ = suspendCoroutine<ChampionDetail?> { continuation ->
-                db.collection("champions").document(name).get().addOnCompleteListener{
-                    if (it.isSuccessful){
+                db.collection("champions").document(name).get().addOnCompleteListener {
+                    if (it.isSuccessful) {
                         var c = it.result.toObject(ChampionDetail::class.java)
                         continuation.resume(c)
-                    }
-                    else{
+                    } else {
                         continuation.resume(null)
                     }
                 }
 
             }
-            if (champ != null){
+            if (champ != null) {
                 return champ
             }
 
@@ -167,17 +167,43 @@ class ChampionsDataSource {
         }
     }*/
 
-        suspend fun addFavorite(id: String){
-            db.collection("favoritos").document("favoritos").set(id)
-                .addOnSuccessListener {
-                    Log.d("Log_Main_Activity", "Se agrego a favoritos")
+        suspend fun addFavorite(id: String) {
+            val favoritosRef = db.collection("favoritos").document("favoritos")
+
+            db.runTransaction { transaction ->
+                val snapshot = transaction.get(favoritosRef)
+                val favoriteList = snapshot.get("ids") as? MutableList<String> ?: mutableListOf()
+
+                if (!favoriteList.contains(id)) {
+                    favoriteList.add(id)
+                    transaction.update(favoritosRef, "ids", favoriteList)
                 }
-                .addOnFailureListener {e ->
-                    Log.e("Log_Main_Activity", "Error guardando favorito" + e.message)
-                }
+            }.addOnSuccessListener {
+                Log.d("Log_Main_Activity", "Se agrego a favoritos")
+            }.addOnFailureListener { e ->
+                Log.e("Log_Main_Activity", "Error guardando favorito: ${e.message}")
+            }
         }
 
+        suspend fun removeFavorite(id: String){
+            val favoritosRef = db.collection("favoritos").document("favoritos")
 
+            db.runTransaction { transaction ->
+                val snapshot = transaction.get(favoritosRef)
+                val favoriteList = snapshot.get("ids") as? MutableList<String> ?: mutableListOf()
 
+                if (favoriteList.contains(id)) {
+                    favoriteList.remove(id)
+                    transaction.update(favoritosRef, "ids", favoriteList)
+                }
+            }.addOnSuccessListener {
+                Log.d("Log_Main_Activity", "Se elimino ${id} de favoritos")
+            }.addOnFailureListener { e ->
+                Log.e("Log_Main_Activity", "Error eliminando favorito: ${e.message}")
+            }
+
+        }
     }
+
+
 }

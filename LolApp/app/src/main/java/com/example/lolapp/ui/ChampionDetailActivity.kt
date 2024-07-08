@@ -1,6 +1,7 @@
 package com.example.lolapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -13,6 +14,7 @@ import com.example.lolapp.R
 import android.view.View
 import com.bumptech.glide.Glide
 import android.widget.Button
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ChampionDetailActivity : AppCompatActivity() {
@@ -21,7 +23,8 @@ class ChampionDetailActivity : AppCompatActivity() {
     lateinit var profile_img: ImageView
     lateinit var champ_lore: TextView
     lateinit var pb: ProgressBar
-    lateinit var btn_add: Button
+    private var isFavorite = false
+    lateinit var btn_add: FloatingActionButton
     lateinit var viewModel: ChampionViewModel
     private val db = FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,23 +46,42 @@ class ChampionDetailActivity : AppCompatActivity() {
         pb = findViewById(R.id.progressBar)
 
         val id = intent.getStringExtra("id")
+        Log.d("Log_Main_Activity", "DetailActivity, id obtenido ${id}")
 
 
-        viewModel.champion.observe(this) {
-            champion_name.text = it.champion_name
-            champion_caption.text = it.champion_caption
-            Glide.with(this).load(it.profile_img).into(profile_img)
-            champ_lore.text = it.lore
-            pb.visibility = View.INVISIBLE
+        if(id != null) {
+            viewModel.champion.observe(this) {champion->
+                champion_name.text = champion.champion_name
+                champion_caption.text = champion.champion_caption
+                if (!champion.profile_img.isNullOrEmpty()) {
+                    Glide.with(this).load(champion.profile_img).into(profile_img)
+                }
+                else{
+                    Log.d("Log_Main_Activity", "null img")
+                }
+                champ_lore.text = champion.lore
+                isFavorite = champion.isFavorite
+                pb.visibility = View.INVISIBLE
 
-            btn_add.setOnClickListener{
-                viewModel.addFavorite(id!!)
+                btn_add.setOnClickListener {
+                    if(isFavorite){
+                        viewModel.removeFavorite(id)
+                        Log.d("Log_Main_Activity", "onClick remove, id: ${id} ")
+
+                    }
+                    else {
+                        viewModel.addFavorite(id!!)
+                        Log.d("Log_Main_Activity", "onClick btn_add, id: ${id} ")
+                    }
+                }
             }
+
+            pb.visibility = View.VISIBLE
+            viewModel.init(id!!, this)
         }
-
-        pb.visibility = View.VISIBLE
-        viewModel.init(id!!, this)
-
+        else{
+            Log.d("Log_Main_Activity", "No hay id valido")
+        }
 
     }
 }

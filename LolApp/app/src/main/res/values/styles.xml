@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryHint">Buscar</item>
+        <item name="android:textColor">#666550</item>
+        <item name="android:textColorHint">#CAB856</item>
+        <item name="queryBackground">@drawable/search_view_background</item>
+    </style>
+</resources>

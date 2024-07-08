@@ -9,8 +9,10 @@
 
     <ImageView
         android:id="@+id/imgSplashArt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,6 +28,7 @@
         android:layout_marginTop="40dp"
         android:fontFamily="@font/pt_serif_caption"
         android:textSize="32sp"
+        android:textColor="@color/default_blue_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="ChampionName" />
@@ -37,7 +40,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/pt_serif_caption"
-        android:textSize="20sp"
+        android:textColor="@color/default_blue_text"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtChampionName"
         tools:text="Caption" />
@@ -47,6 +51,8 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:progressTint="@color/default_blue_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +64,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="60dp"
-        android:contentDescription="@string/app_name"
         android:clickable="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_search"
         app:backgroundTint="#2F3941"
         app:borderWidth="3dp"
+        app:circularflow_angles="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="#851A1A"
+        app:rippleColor="#C3AF72"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -73,6 +81,8 @@
         android:layout_height="340dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="130dp"
+        android:textColor="@color/default_blue_text"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtChampionCaption"
         tools:text="Champion_lore" />

@@ -20,4 +20,9 @@ class ChampionsRepository {
         Log.d("Log_Main_Activity", "Repository addFavorite")
         ChampionsDataSource.addFavorite(id)
     }
+
+    suspend fun removeFavorite(id: String){
+        Log.d("Log_Main_Activity", "Repository deleteFavorite")
+        ChampionsDataSource.removeFavorite(id)
+    }
 }

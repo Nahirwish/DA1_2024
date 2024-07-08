@@ -1,6 +1,7 @@
 package com.example.lolapp.ui
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lolapp.data.ChampionsRepository
@@ -21,7 +22,7 @@ class ChampionViewModel : ViewModel(){
     fun init(name: String, context: Context){
         scope.launch {
             kotlin.runCatching {
-                champRepo.getChampion(name, context) // ????????
+                champRepo.getChampion(name, context)
             }.onSuccess {
                 champion.postValue(it ?: ChampionDetail())
             }.onFailure {
@@ -37,7 +38,23 @@ class ChampionViewModel : ViewModel(){
         scope.launch {
             kotlin.runCatching {
                 champRepo.addFavorite(id)
-            }.onSuccess {  }
+            }.onSuccess {
+                Log.d("Log_Main_Activity", "addFavorite en ChampionViewModel Success")
+            }.onFailure {e->
+                Log.d("Log_Main_activity", "addFavorite en ChampionViewModel Failure ${e.message}")
+            }
+        }
+    }
+
+    fun removeFavorite(id: String){
+        scope.launch {
+            kotlin.runCatching {
+                champRepo.removeFavorite(id)
+            }.onSuccess {
+                Log.d("Log_Main_Activity", "removeFavorite en ChampionViewModel Success")
+            }.onFailure { e ->
+                Log.d("Log_Main_Activity", "removeFavorite en ChampionViewModel Failure ${e.message}" )
+            }
         }
     }
 }

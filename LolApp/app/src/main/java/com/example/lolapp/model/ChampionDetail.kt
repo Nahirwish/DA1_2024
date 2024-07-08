@@ -8,8 +8,9 @@ data class ChampionDetail(
     @SerializedName("champion_caption") var champion_caption: String,
     @SerializedName("recomended_roles") var recomended_roles: String,
     @SerializedName("splashart") var profile_img: String,
-    @SerializedName("lore") var lore: String
+    @SerializedName("lore") var lore: String,
+    var isFavorite: Boolean
 ) {
-    constructor():this("","","","", "")
+    constructor():this("","","","", "", false)
 
 }

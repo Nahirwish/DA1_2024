@@ -1,5 +1,8 @@
 package com.example.lolapp.ui
 
+import android.app.SearchManager
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -13,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.lolapp.R
 import com.google.firebase.auth.FirebaseAuth
 import android.util.Log
+import android.view.Menu
+import android.widget.SearchView
 import android.widget.TextView
+import androidx.core.view.MenuItemCompat
 import com.example.lolapp.model.Champion
 
 class ListActivity : AppCompatActivity() {
@@ -52,14 +58,14 @@ class ListActivity : AppCompatActivity() {
             if (isShowingFavorites) {
                 val favoriteChampions = champions.filter { champion -> champion.isFavorite }
                 Log.d("Log_Main_Activity", "Mostrando solo favoritos: ${favoriteChampions.size}")
-                favoriteChampions.forEach {
+                /*favoriteChampions.forEach {
                     Log.d(
                         "Log_Main_Activity", "Favorite Champion: ${it.champion_name}")
-                }
+
+                }*/
                 adapter.update(favoriteChampions as MutableList<Champion>)
             } else {
                 Log.d("Log_Main_Activity", "Mostrando todos los champs: ${champions.size}")
-                champions.forEach { Log.d("Log_Main_Activity", "Champion: ${it.champion_name}") }
                 adapter.update(champions as MutableList<Champion>)
             }
         }
@@ -83,6 +89,29 @@ class ListActivity : AppCompatActivity() {
             }
         }
 
+    }
+    // Busqueda
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_view, menu)
+
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu?.findItem(R.id.search_bar)?.actionView as SearchView
+        val component = ComponentName(this, ListActivity::class.java)
+        val serchableInfo = searchManager.getSearchableInfo(component)
+        searchView.setSearchableInfo(serchableInfo)
+        return true
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
+    private fun handleIntent(intent: Intent){
+        if (Intent.ACTION_SEARCH == intent.action){
+            val query = intent.getStringExtra(SearchManager.QUERY)
+            Log.d("Log_Main_Activity","busqueda: ${query}")
+        }
     }
 
     override fun onResume() {
