@@ -1,7 +1,80 @@
-{
+[
+  {
   "champion_name": "Aatrox",
   "champion_caption": "La espada darkin",
   "recomended_roles": "Luchador",
   "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/db39563458aa28c3f3aa8990f2c964a0f7645097-496x560.jpg?auto=format&fit=fill&q=80&w=392",
   "lore": "Alguna vez honorables defensores de Shurima contra el Vacío, Aatrox y sus hermanos se convertirían con el tiempo en una mayor amenaza para Runaterra, y fueron derrotados solo con brujería astuta y mortal. Pero después de siglos de encarcelamiento, Aatrox fue el primero en encontrar la libertad de nueva cuenta, corrompiendo y transformando a aquellos lo suficientemente tontos como para intentar blandir el arma mágica que contenía su esencia. Ahora, con carne robada, él camina por Runaterra en una brutal aproximación a su forma pasada, buscando una venganza apocalíptica y muy retrasada."
-}
+  },
+
+  {
+    "champion_name": "Ahri",
+   "champion_caption": "La vastaya de nueve colas",
+   "recomended_roles": "Mago",
+   "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55e7e901b1f69d72804665cfbeb1f4f59c8fa877-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+   "lore": "Ahri es una vastaya de aspecto vulpino conectada de forma innata a la magia del reino de los espíritus; puede manipular las emociones de sus presas y consumir su esencia, por lo que recibe fragmentos de su memoria y conocimiento de cada alma que consume. Ahri antes era una depredadora poderosa y descarriada, pero ahora viaja por el mundo en busca de vestigios de sus antepasados,mientras intenta sustituir los recuerdos que robó de sus víctimas por otros creados por ella misma."
+  },
+
+  {
+    "champion_name": "Akali",
+    "champion_caption": "La asesina furtiva",
+    "recomended_roles": "Asesino",
+    "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/abbd173df157f943496abb0638add119f753e3b2-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore":"Tras renunciar a la Orden Kinkou y a su título como el Puño de la Sombra, Akali pelea sola, lista para ser el arma letal que su pueblo necesita. Aunque conserva todo lo que aprendió de su maestro Shen, juró defender a Jonia de sus enemigos, una muerte a la vez. Puede que Akali ataque en silencio, pero su mensaje resonará con fuerza y claridad: teman a la asesina sin maestro."
+  },
+
+  {
+    "champion_name": "Akshan",
+    "champion_caption": "El centinela rebelde",
+    "recomended_roles": "Tirador",
+    "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9e5ea58123ac5a699700eec49f8412af11e563a0-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore": "Con una ceja levantada frente al peligro, Akshan pelea contra el mal con un carisma deslumbrante, un deseo de venganza justo y una llamativa falta de camisetas. Habilidoso en el arte del combate furtivo, es capaz de evadir a sus enemigos y reaparecer cuando menos se lo esperan. Con un profundo sentido de la justicia y un arma legendaria que desafía a la muerte, corrige las injusticias cometidas por los rufianes de Runaterra mientras se rige por su propio código moral: ''No seas un imbécil''."
+  },
+
+  {
+    "champion_name": "Alistar",
+    "champion_caption": "El minotauro",
+    "recomended_roles": "Tanque",
+    "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/da8cefee5b85bca51360ccc1635ef5b0f6967767-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore": "Alistar, que desde siempre fue un gran guerrero con una temible reputación, busca venganza por la muerte de su clan a manos del imperio noxiano. Aunque haya sido esclavizado y forzado a tener una vida de gladiador, su voluntad inquebrantable fue lo que impidió que se convirtiera en una bestia completamente. Ahora, libre de las cadenas de sus anteriores amos, pelea en nombre de los desamparados y desprotegidos usando tanto su furia como sus cuernos, pezuñas y puños como armas."
+  },
+
+  {
+    "champion_name":"Amumu",
+    "champion_caption": "La momia triste",
+    "recomended_roles": "Tanque",
+    "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/092febba8905cff35940d036fd20b7e3ad4f428f-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore": "Cuenta la leyenda que Amumu es un alma solitaria y melancólica de la antigua Shurima que vaga por el mundo en busca de un amigo. Una antigua maldición lo condenó a permanecer solo por toda la eternidad. Sus caricias son la muerte, su afecto es la ruina. Quienes afirman haberlo visto lo describen como un cadáver viviente de corta estatura envuelto en vendajes. Amumu ha sido la inspiración de mitos, canciones y folclore que se han contado una y otra vez a lo largo de generaciones, tanto que es imposible separar la verdad de la ficción."
+  },
+
+  {
+    "champion_name": "Anivia",
+    "champion_caption": "La criofénix",
+    "recomended_roles": "Mago",
+    "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b9081057a6282c7c7f074dc9cec094b8d51df9bf-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore": "Anivia es un espíritu benevolente alado que soporta interminables ciclos de vida, muerte y resurrección para proteger Fréljord. Nació de la unión del hielo cruel y del viento penetrante, por lo que es una semidiosa que utiliza esos poderes elementales para frustrar a quien se atreva a perturbar su tierra natal. Anivia guía y protege a las tribus del norte hostil, quienes la veneran como símbolo de esperanza y como presagio de un gran cambio. Pelea con cada fibra de su ser sabiendo que su recuerdo perdurará a través de su sacrificio y que renacerá en un nuevo mañana."
+  },
+
+  {
+    "champion_name": "Annie",
+    "champion_caption": "La hija de la oscuridad",
+    "recomended_roles": "Mago",
+    "splashart": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/220684b035ca0a0dc0d93c17ee058872d7c2a4e9-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore": "Peligrosa y encantadora, Annie es una niña con un gran poder piromántico. Incluso en las sombras de las montañas al norte de Noxus, es una maga excepcional. Su afinidad innata con el fuego se manifestó de forma precoz a través de explosiones emocionales impredecibles, aunque aprendió con el tiempo a controlar esos ''trucos inocentes''. Uno de sus favoritos es invocar a su amado osito de peluche Tibbers como su feroz protector. Annie vaga por los bosques oscuros siempre en busca de alguien con quien jugar, perdida en la perpetua inocencia de la niñez."
+  },
+
+  {
+    "champion_name": "Aphelios",
+    "champion_caption": "El arma de los adeptos",
+    "recomended_roles": "Tirador",
+    "splashart":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_0.jpg",
+    "lore": "Aphelios emerge de la sombra de la luz de la luna con las armas desenvainadas y mata a los enemigos de su fe en un silencio melancólico. Habla únicamente a través de la certeza de su puntería y del disparo de cada arma. Si bien su impulso proviene de un veneno que lo enmudece, es guiado por su hermana Alune, quien, desde un santuario lejano, le envía a sus manos un arsenal de armas de piedra lunar. Mientras la luna resplandezca en lo alto, Aphelios nunca estará solo."
+  },
+  {
+    "champion_name": "Ashe",
+    "champion_caption": "La arquera de hielo",
+    "recomended_roles": "Tirador",
+    "splashart":"https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6311d8de67f55496be4886a353372c8da713dade-496x560.jpg?auto=format&fit=fill&q=80&w=392",
+    "lore": "Como Hija del Hielo y madre de guerra de la tribu Avarosa, Ashe comanda la más grande horda en el norte. Estoica, inteligente e idealista, pero incómoda con su rol de líder, ella aprovecha las magias ancestrales de su linaje para portar un arco de Hielo.."
+  }
+]

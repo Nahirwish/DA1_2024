@@ -25,7 +25,9 @@ class ChampionViewModel : ViewModel(){
                 champRepo.getChampion(name, context)
             }.onSuccess {
                 champion.postValue(it ?: ChampionDetail())
+                Log.d("Log_Main_Activity", "ViewModel postValue ")
             }.onFailure {
+                Log.d("Log_Main_Activity", "ViewModel error" )
                 val champ = ChampionDetail()
                 champ.champion_name = "Error"
                 champ.recomended_roles = ""

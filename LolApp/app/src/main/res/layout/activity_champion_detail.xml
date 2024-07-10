@@ -5,13 +5,25 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:overScrollMode="always"
     tools:context=".ui.ChampionDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
 
     <ImageView
         android:id="@+id/imgSplashArt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
+        android:alpha="0.8"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,8 +39,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/pt_serif_caption"
-        android:textSize="32sp"
         android:textColor="@color/default_blue_text"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="ChampionName" />
@@ -60,31 +72,45 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="60dp"
         android:clickable="true"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_search"
         app:backgroundTint="#2F3941"
         app:borderWidth="3dp"
-        app:circularflow_angles="10dp"
+        app:circularflow_angles="50dp"
+        app:fabCustomSize="60dp"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="#C3AF72"
         tools:srcCompat="@tools:sample/avatars" />
 
+
+
     <TextView
         android:id="@+id/txtLore"
         android:layout_width="320dp"
-        android:layout_height="340dp"
+        android:layout_height="390dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="130dp"
+        android:textAlignment="viewStart"
         android:textColor="@color/default_blue_text"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtChampionCaption"
         tools:text="Champion_lore" />
+
+    <ImageView
+        android:id="@+id/img_Rol"
+        android:layout_width="80dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

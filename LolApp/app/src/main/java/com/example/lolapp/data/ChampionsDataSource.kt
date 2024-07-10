@@ -17,6 +17,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.tasks.await
 import retrofit2.create
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -122,34 +123,41 @@ class ChampionsDataSource {
         }*/
 
         suspend fun getChampion(name: String, context: Context): ChampionDetail? {
-
-            var champ = suspendCoroutine<ChampionDetail?> { continuation ->
-                db.collection("champions").document(name).get().addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        var c = it.result.toObject(ChampionDetail::class.java)
-                        continuation.resume(c)
-                    } else {
-                        continuation.resume(null)
+            return try {
+                var champ = suspendCoroutine<ChampionDetail?> { continuation ->
+                    db.collection("champions").document(name).get().addOnCompleteListener {
+                        if (it.isSuccessful && it.result.exists()) {
+                            var c = it.result.toObject(ChampionDetail::class.java)
+                            continuation.resume(c)
+                        } else {
+                            continuation.resume(null)
+                        }
                     }
+
+                }
+                if (champ != null) {
+                    return champ
+                    Log.d("Log_Main_Activity", "DS: Devuelvo champion local")
                 }
 
+                delay(4000)
+
+                val inputStream = context.assets.open("champion_detail.json")
+                val reader = InputStreamReader(inputStream)
+                val gson = Gson()
+                val detailsType = object : TypeToken<List<ChampionDetail>>() {}.type
+                val championDetail: List<ChampionDetail> = gson.fromJson(reader, detailsType)
+                reader.close()
+
+                val detail = championDetail.find { it.champion_name == name }
+                detail?.let {
+                    db.collection("champions").document(name).set(it).await()
+                }
+                detail
+            }catch (e: Exception){
+                Log.e("Log_Main_Activity", "DS error obteniendo champ ${e.message}")
+                null
             }
-            if (champ != null) {
-                return champ
-            }
-
-            delay(5000)
-
-            val inputStream = context.assets.open("champion_detail.json")
-            val reader = InputStreamReader(inputStream)
-            val gson = Gson()
-            val championDetail: ChampionDetail = gson.fromJson(reader, ChampionDetail::class.java)
-            reader.close()
-
-            Log.d("Log_Main_Activity", "Champion data source is successful")
-            db.collection("champions").document(name).set(championDetail)
-
-            return championDetail
         }
 
         /*var result = api_detail.getChampion().execute()

@@ -24,7 +24,7 @@ class ChampionsAdapter : RecyclerView.Adapter<ChampionsViewHolder>(){
         Glide.with(holder.itemView.context).load(items[position].profile_img).into(holder.champion_icon)
 
         holder.itemView.setOnClickListener(){
-            val id = items[0].champion_name
+            val id = items[position].champion_name
             Log.d("Log_Main_Activity", "click item, id: {$id}")
             val intent = Intent(holder.itemView.context, ChampionDetailActivity::class.java)
             intent.putExtra("id", id)

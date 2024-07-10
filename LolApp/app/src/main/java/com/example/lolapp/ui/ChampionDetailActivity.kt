@@ -23,6 +23,7 @@ class ChampionDetailActivity : AppCompatActivity() {
     lateinit var profile_img: ImageView
     lateinit var champ_lore: TextView
     lateinit var pb: ProgressBar
+    lateinit var ic_rol: ImageView
     private var isFavorite = false
     lateinit var btn_add: FloatingActionButton
     lateinit var viewModel: ChampionViewModel
@@ -42,6 +43,7 @@ class ChampionDetailActivity : AppCompatActivity() {
         champion_caption= findViewById(R.id.txtChampionCaption)
         profile_img = findViewById(R.id.imgSplashArt)
         champ_lore = findViewById(R.id.txtLore)
+        ic_rol = findViewById(R.id.img_Rol)
         btn_add = findViewById(R.id.btnAdd)
         pb = findViewById(R.id.progressBar)
 
@@ -52,13 +54,18 @@ class ChampionDetailActivity : AppCompatActivity() {
         if(id != null) {
             viewModel.champion.observe(this) {champion->
                 champion_name.text = champion.champion_name
-                champion_caption.text = champion.champion_caption
-                if (!champion.profile_img.isNullOrEmpty()) {
-                    Glide.with(this).load(champion.profile_img).into(profile_img)
+                champion_caption.text = champion.champion_caption.uppercase()
+                val img_res = when(champion.recomended_roles){
+                    "Luchador" -> R.drawable.ic_luchador
+                    "Asesino" -> R.drawable.ic_asesino
+                    "Tanque" -> R.drawable.ic_tanque
+                    "Tirador" -> R.drawable.icono_tirador
+                    "Mago" -> R.drawable.ic_mago
+                    "Soporte" -> R.drawable.ic_soporte
+                    else -> R.drawable.icons_busqueda
                 }
-                else{
-                    Log.d("Log_Main_Activity", "null img")
-                }
+                Glide.with(this).load(img_res).into(ic_rol)
+                Glide.with(this).load(champion.profile_img).into(profile_img)
                 champ_lore.text = champion.lore
                 isFavorite = champion.isFavorite
                 pb.visibility = View.INVISIBLE
