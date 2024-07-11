@@ -71,13 +71,15 @@ class ChampionDetailActivity : AppCompatActivity() {
                 pb.visibility = View.INVISIBLE
 
                 btn_add.setOnClickListener {
-                    if(isFavorite){
+                    if(champion.isFavorite){
                         viewModel.removeFavorite(id)
+                        champion.isFavorite = false
                         Log.d("Log_Main_Activity", "onClick remove, id: ${id} ")
 
                     }
                     else {
                         viewModel.addFavorite(id!!)
+                        champion.isFavorite = true
                         Log.d("Log_Main_Activity", "onClick btn_add, id: ${id} ")
                     }
                 }
